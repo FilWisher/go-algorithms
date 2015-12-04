@@ -50,10 +50,9 @@ func main() {
   var heap *Heap
 
   /* TODO: get values from somewhere more interesting (array?) */
-  heap = insert(heap, 1);
-  heap = insert(heap, 3);
-  heap = insert(heap, 2);
-  print_heap(heap);
-
+  heap = insert(heap, 1)
+  heap = insert(heap, 3)
+  heap = insert(heap, 2)
+  print_heap(heap)
 
 }
