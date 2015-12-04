@@ -12,9 +12,9 @@ type Heap struct {
 
 /*
 
-  INVARIANTS: 
+  INVARIANTS:
     - Greatest value stays at top of heap.
- 
+
   OPERATIONS
     - Insert
     - Remove
@@ -22,15 +22,20 @@ type Heap struct {
 
 */
 
-/* TODO: shouldn't only build up on the left hand side */
 func insert(heap *Heap, val int) *Heap {
+  insertion := val
   if heap == nil {
     heap = &Heap{ nil, val, nil }
+    return heap
   } else if val > heap.value {
-    heap.left = insert(heap.left, val)
-  } else if val < heap.value {
-    heap.left = insert(heap.left, heap.value)
+    insertion = heap.value
     heap.value = val
+  }
+  // not sure about the costs of these 'assignments' when already assigned
+  if heap.left != nil {
+    heap.right = insert(heap.right, insertion)
+  } else {
+    heap.left = insert(heap.left, insertion)
   }
   return heap
 }
